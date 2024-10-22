@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catch-a-Bus</title>
+  </head>
+  <body>
+    <div id="main-container">
+      <img
+        src="https://cdn.glitch.global/d51784a5-50a3-463e-946e-fc1fc27d860f/Screenshot%202024-10-13%20170934.png?v=1728810603076"
+      />
+      <button id="catchBusButton">Catch-a-Bus</button>
+      <div id="message1">Click the button to get a bus!</div>
+    </div>
+    <div id="destination-container">
+      <div id="from-container">
+        <label>From:</label>
+        <Lmap id="LMap1" zoom="zoom" :min-zoom="minZoom" :max-zoom="maxZoom" :center="center" :useGlobalLeaflet="false"></Lmap>
+        <input
+          type="text"
+          id="nearestBusStopBox"
+          placeholder="Nearest Bus Stop"
+          disabled="true"
+        />
+        <button id="findLocationButton">Find nearest bus stop</button>
+      </div>
+      <div id="to-container">
+        <label>To:</label>
+        <select
+          disabled="true"
+          name="desiredDestination"
+          id="desiredDestination"
+        >
+          <option id="selectMessage" hidden disabled selected value>
+            -- select destinaton bus stop --
+          </option>
+        </select>
+      </div>
+      <button id="okButton" disabled="true">Request Bus</button>
+      <div id="message"></div>
+    </div>
+    <script></script>
+  </body>
+  <script src="code.js"></script>
+</html>
