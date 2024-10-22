@@ -3,7 +3,7 @@ import './css/lucy.css';
 import './css/leaflet.css';
 
 import pageHTML from './html/page.html?raw';
-import { getCurrentPosition, whichPointIsNearest } from './lib/geoPosition';
+import { whichPointIsNearest } from './lib/geoPosition';
 import { busStopsGeoPositions } from './busStopsGeoPositions';
 import * as L from 'leaflet';
 
@@ -46,6 +46,21 @@ startButton.onclick = function () {
 
 findLocationButton.onclick = async () => {
   const nearestStop = await whichPointIsNearest({
+    point: {
+      name: "12 Wood St",
+      position: {
+        timestamp: 1729584406476,
+        coords: {
+          latitude: -31.9813396,
+          longitude: 115.7702712,
+          accuracy: 10,
+          altitude: null,
+          altitudeAccuracy: null,
+          heading: null,
+          speed: null
+        }
+      }
+    },
     points: busStopsGeoPositions,
   });
   nearestBusStopBox.value = 'finding nearest stop...';
@@ -57,10 +72,8 @@ findLocationButton.onclick = async () => {
 
   /// map test
   console.log('map time');
-  const here = await getCurrentPosition();
-
   const LMap1 = L.map(busMap);
-  LMap1.setView([here.coords.latitude,here.coords.longitude], 13);
+  LMap1.setView([nearestStop.point.position.coords.latitude, nearestStop.point.position.coords.longitude], 13);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution:

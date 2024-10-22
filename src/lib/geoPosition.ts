@@ -27,6 +27,7 @@ export const getCurrentPosition = (
     window.rejectGeoposition = reject;
     navigator.geolocation.getCurrentPosition(
       (pos) => {
+        console.table(pos);
         window.resolveGeoPosition(pos);
       },
       (err) => {
@@ -40,27 +41,6 @@ export const getCurrentPosition = (
   });
 };
 
-// Convert Degress to Radians
-const degreesToRadians = (deg: number): number => (deg * Math.PI) / 180;
-
-// uses pythagorus to esitimate distance beween GeolocationPositions
-export const distanceBetweenPoints = (point1: point, point2: point): number => {
-  // extract co-ordinates and convert degrees to radians
-  const point1LatRad = degreesToRadians(point1.position.coords.latitude);
-  const point1LongRad = degreesToRadians(point1.position.coords.longitude);
-  const point2LatRad = degreesToRadians(point2.position.coords.latitude);
-  const point2LongRad = degreesToRadians(point2.position.coords.longitude);
-
-  // work out the x and y axes lengths
-  const x =
-    (point2LongRad - point1LongRad) *
-    Math.cos((point1LatRad + point2LatRad) / 2);
-  const y = point2LatRad - point1LatRad;
-
-  // return the hypotenuse
-  return Math.sqrt(x ^ (2 + y) ^ 2) * 6371; // 6371 is to convert to km;
-};
-
 // accepts an array of points and either an accepted index point
 // or the current GPS position if not provided
 export const whichPointIsNearest = async (data: {
@@ -70,15 +50,19 @@ export const whichPointIsNearest = async (data: {
   // if index point not provided then use the current GPS position
   let startingPoint = data.point || {
     position: await getCurrentPosition(),
-    name: 'GPS location',
+    name: "GPS location",
   };
+  console.log("using this as the starting point");
+  console.table(startingPoint);
   // create a new array of objects with points and their distances from the index point
   const pointsAndDistances = data.points.map((p) => {
     return {
       point: p,
-      distance: distanceBetweenPoints(startingPoint, p),
+      distance: distanceBetweenPointsNew(startingPoint, p),
     };
   });
+  console.log("the distances");
+  console.table(pointsAndDistances);
   // use reduce to find the shortest distance
   const nearestPointAndDistance = pointsAndDistances.reduce(
     (previous, current) => {
@@ -87,4 +71,49 @@ export const whichPointIsNearest = async (data: {
   );
   // could probably shorten this entire function but kept it readable
   return nearestPointAndDistance;
+};
+
+// Wrapper for the below function to work with my types
+const distanceBetweenPointsNew = (point1: point, point2: point): number =>
+  distanceBetweenLatLong({
+    lat1: point1.position.coords.latitude,
+    lon1: point1.position.coords.longitude,
+    lat2: point2.position.coords.latitude,
+    lon2: point2.position.coords.longitude,
+    unit: "K",
+  });
+
+// this function lifted from https://www.geodatasource.com/developers/javascript
+// with TS tyes put in
+const distanceBetweenLatLong = (data: {
+  lat1: number;
+  lon1: number;
+  lat2: number;
+  lon2: number;
+  unit?: string;
+}): number => {
+  if (data.lat1 == data.lat2 && data.lon1 == data.lon2) {
+    return 0;
+  } else {
+    var radlat1 = (Math.PI * data.lat1) / 180;
+    var radlat2 = (Math.PI * data.lat2) / 180;
+    var theta = data.lon1 - data.lon2;
+    var radtheta = (Math.PI * theta) / 180;
+    var dist =
+      Math.sin(radlat1) * Math.sin(radlat2) +
+      Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    if (dist > 1) {
+      dist = 1;
+    }
+    dist = Math.acos(dist);
+    dist = (dist * 180) / Math.PI;
+    dist = dist * 60 * 1.1515;
+    if (data.unit == "K") {
+      dist = dist * 1.609344;
+    }
+    if (data.unit == "N") {
+      dist = dist * 0.8684;
+    }
+    return dist;
+  }
 };
