@@ -1,4 +1,4 @@
-import { point } from './lib/geoPosition';
+import { point } from "./lib/geoPosition";
 
 export const busStopsGeoPositions: point[] = [
   {
@@ -32,7 +32,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Upperhand Burgers',
+    name: "Upperhand Burgers",
     position: {
       coords: {
         accuracy: 0,
@@ -47,7 +47,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Daises Cottesloe',
+    name: "Daises Cottesloe",
     position: {
       coords: {
         accuracy: 0,
@@ -62,7 +62,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'North Street Store',
+    name: "North Street Store",
     position: {
       coords: {
         accuracy: 0,
@@ -77,7 +77,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Kings Park and Botanic Garden',
+    name: "Kings Park and Botanic Garden",
     position: {
       coords: {
         accuracy: 0,
@@ -92,7 +92,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Cottesloe Beach',
+    name: "Cottesloe Beach",
     position: {
       coords: {
         accuracy: 0,
@@ -107,7 +107,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Elizabeth Quay',
+    name: "Elizabeth Quay",
     position: {
       coords: {
         accuracy: 0,
@@ -122,7 +122,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Fremantle Markets',
+    name: "Fremantle Markets",
     position: {
       coords: {
         accuracy: 0,
@@ -137,7 +137,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Perth Zoo',
+    name: "Perth Zoo",
     position: {
       coords: {
         accuracy: 0,
@@ -152,7 +152,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'The Perth Mint',
+    name: "The Perth Mint",
     position: {
       coords: {
         accuracy: 0,
@@ -167,7 +167,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Northbridge (Cultural Precinct)',
+    name: "Northbridge (Cultural Precinct)",
     position: {
       coords: {
         accuracy: 0,
@@ -182,7 +182,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Scarborough Beach',
+    name: "Scarborough Beach",
     position: {
       coords: {
         accuracy: 0,
@@ -197,7 +197,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Burswood Park',
+    name: "Burswood Park",
     position: {
       coords: {
         accuracy: 0,
@@ -212,7 +212,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Art Gallery of Western Australia',
+    name: "Art Gallery of Western Australia",
     position: {
       coords: {
         accuracy: 0,
@@ -227,7 +227,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Perth Cultural Centre',
+    name: "Perth Cultural Centre",
     position: {
       coords: {
         accuracy: 0,
@@ -242,7 +242,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Crown Perth (Resort and Casino)',
+    name: "Crown Perth (Resort and Casino)",
     position: {
       coords: {
         accuracy: 0,
@@ -257,7 +257,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Hyde Park',
+    name: "Hyde Park",
     position: {
       coords: {
         accuracy: 0,
@@ -272,7 +272,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Westfield Carousel (Shopping Centre)',
+    name: "Westfield Carousel (Shopping Centre)",
     position: {
       coords: {
         accuracy: 0,
@@ -287,7 +287,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Karrinyup Shopping Centre',
+    name: "Karrinyup Shopping Centre",
     position: {
       coords: {
         accuracy: 0,
@@ -302,7 +302,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Claremont Quarter (Shopping Centre)',
+    name: "Claremont Quarter (Shopping Centre)",
     position: {
       coords: {
         accuracy: 0,
@@ -317,7 +317,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'North Cottesloe Primary School',
+    name: "North Cottesloe Primary School",
     position: {
       coords: {
         accuracy: 0,
@@ -332,7 +332,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Cottesloe Primary School',
+    name: "Cottesloe Primary School",
     position: {
       coords: {
         accuracy: 0,
@@ -347,7 +347,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Swanny Primary (Swanbourne Primary School)',
+    name: "Swanny Primary (Swanbourne Primary School)",
     position: {
       coords: {
         accuracy: 0,
@@ -362,7 +362,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Mosman Park Primary School',
+    name: "Mosman Park Primary School",
     position: {
       coords: {
         accuracy: 0,
@@ -377,7 +377,7 @@ export const busStopsGeoPositions: point[] = [
     },
   },
   {
-    name: 'Freshwater Bay Primary School',
+    name: "Freshwater Bay Primary School",
     position: {
       coords: {
         accuracy: 0,

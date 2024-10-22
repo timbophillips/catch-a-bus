@@ -1,69 +1,54 @@
-import './css/classless.css'
-import './css/lucy.css';
-import './css/leaflet.css';
+import "./css/classless.css";
+import "./css/lucy.css";
+import "./css/leaflet.css";
 
-import pageHTML from './html/page.html?raw';
-import { whichPointIsNearest } from './lib/geoPosition';
-import { busStopsGeoPositions } from './busStopsGeoPositions';
-import * as L from 'leaflet';
+import pageHTML from "./html/page.html?raw";
+import { whichPointIsNearest } from "./lib/geoPosition";
+import { busStopsGeoPositions } from "./busStopsGeoPositions";
+import * as L from "leaflet";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = pageHTML;
+document.querySelector<HTMLDivElement>("#app")!.innerHTML = pageHTML;
 
 const startButton = document.getElementById(
-  'catchBusButton'
+  "catchBusButton"
 ) as HTMLButtonElement;
 const mainContainer = document.getElementById(
-  'main-container'
+  "main-container"
 ) as HTMLDivElement;
 const destinationContainer = document.getElementById(
-  'destination-container'
+  "destination-container"
 ) as HTMLDivElement;
 const findLocationButton = document.getElementById(
-  'findLocationButton'
+  "findLocationButton"
 ) as HTMLButtonElement;
 const nearestBusStopBox = document.getElementById(
-  'nearestBusStopBox'
+  "nearestBusStopBox"
 ) as HTMLInputElement;
 const destinationBox = document.getElementById(
-  'desiredDestination'
+  "desiredDestination"
 ) as HTMLSelectElement;
 const requestBusButton = document.getElementById(
-  'okButton'
+  "okButton"
 ) as HTMLButtonElement;
-const messageText = document.getElementById('message') as HTMLDivElement;
-const busMap = document.getElementById('LMap1') as HTMLDivElement;
+const messageText = document.getElementById("message") as HTMLDivElement;
+const busMap = document.getElementById("LMap1") as HTMLDivElement;
 
 startButton.onclick = function () {
   busStopsGeoPositions.forEach((busStop) => {
-    const option = document.createElement('option');
+    const option = document.createElement("option");
     option.text = busStop.name;
     destinationBox.add(option);
   });
-  messageText.innerText = '';
-  mainContainer.style.display = 'none';
-  destinationContainer.style.display = 'flex';
+  messageText.innerText = "";
+  mainContainer.style.display = "none";
+  destinationContainer.style.display = "flex";
 };
 
 findLocationButton.onclick = async () => {
   const nearestStop = await whichPointIsNearest({
-    point: {
-      name: "12 Wood St",
-      position: {
-        timestamp: 1729584406476,
-        coords: {
-          latitude: -31.9813396,
-          longitude: 115.7702712,
-          accuracy: 10,
-          altitude: null,
-          altitudeAccuracy: null,
-          heading: null,
-          speed: null
-        }
-      }
-    },
     points: busStopsGeoPositions,
   });
-  nearestBusStopBox.value = 'finding nearest stop...';
+  nearestBusStopBox.value = "finding nearest stop...";
 
   // assign the nearest city
   nearestBusStopBox.value = nearestStop.point.name;
@@ -71,10 +56,16 @@ findLocationButton.onclick = async () => {
   destinationBox.disabled = false;
 
   /// map test
-  console.log('map time');
+  console.log("map time");
   const LMap1 = L.map(busMap);
-  LMap1.setView([nearestStop.point.position.coords.latitude, nearestStop.point.position.coords.longitude], 13);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  LMap1.setView(
+    [
+      nearestStop.point.position.coords.latitude,
+      nearestStop.point.position.coords.longitude,
+    ],
+    13
+  );
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution:
       '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
