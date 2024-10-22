@@ -1,4 +1,4 @@
-import { point } from './geoPosition/geoPosition';
+import { point } from './lib/geoPosition';
 
 export const busStopsGeoPositions: point[] = [
   {
