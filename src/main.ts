@@ -3,7 +3,7 @@ import './css/lucy.css';
 import './css/leaflet.css';
 
 import pageHTML from './html/page.html?raw';
-import { whichPointIsNearest } from './lib/geoPosition';
+import { getCurrentPosition, whichPointIsNearest } from './lib/geoPosition';
 import { busStopsGeoPositions } from './busStopsGeoPositions';
 import * as L from 'leaflet';
 
@@ -57,8 +57,10 @@ findLocationButton.onclick = async () => {
 
   /// map test
   console.log('map time');
+  const here = await getCurrentPosition();
+
   const LMap1 = L.map(busMap);
-  LMap1.setView([nearestStop.point.position.coords.latitude,nearestStop.point.position.coords.longitude], 13);
+  LMap1.setView([here.coords.latitude,here.coords.longitude], 13);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution:
