@@ -10,22 +10,24 @@ Table of Contents:
 
 /* 1. Theme Settings ––––––––––––––––––––-–––––––––––––– */
 
+/* for milligram */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic');
 
-:root, html[data-theme='light'] {
-	--rem: 12pt;
-	--width: 50rem;
-	--navpos: absolute;  /* fixed | absolute */
-	--font-p: 1em/1.7  'Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
-	--font-h: .9em/1.5 'Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
-	--font-c: .9em/1.4 'DejaVu Sans Mono', monospace;
-	--border: 1px solid var(--cmed);
+:root, html[data-theme='milligram']{
+	--navpos: fixed;
+	--rem: 11pt;
+	--width: 800px;
+	--font-p: 300 1em/1.6 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+	--font-h: 300 1em/1.3 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+	--font-c: 86%/1.4 monospace;
 	--ornament: "‹‹‹ ›››";
+	--border: 1px solid var(--cmed);
 	/* foreground   | background color */
-	--cfg:   #433;    --cbg:    #fff;
-	--cdark: #888;    --clight: #f5f6f7;
-	--cmed:  #d1d1d1;
-	--clink: #07c;
-	--cemph: #088;    --cemphbg: #0881;
+	--cfg:   #606c76; --cbg: #fff;
+	--cdark: #6c605c; --clight: #f4f5f6;
+	--cmed: #d1d1d1;
+	--clink: #9b4dca;
+	--cemph: #9b4dca; --cemphbg: #9b4dca10;
 }
 
 

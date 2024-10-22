@@ -1,4 +1,3 @@
-import './css/classless-theme-milligram.css'
 import './css/classless.css'
 import './css/lucy.css';
 import './css/leaflet.css';
