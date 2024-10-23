@@ -39,7 +39,7 @@ startButton.onclick = function () {
     option.text = busStop.name;
     destinationBox.add(option);
   });
-  messageText.innerText = "";
+  messageText.innerText = ""; ``
   mainContainer.style.display = "none";
   destinationContainer.style.display = "flex";
 };
