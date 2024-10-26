@@ -4,7 +4,7 @@ import "./css/leaflet.css";
 
 import pageHTML from "./html/page.html?raw";
 import { whichPointIsNearest } from "./lib/geoPosition";
-import { busStopsGeoPositions } from "./busStopsGeoPositions";
+import { sortedNewBusStopPoints as busStopsGeoPositions } from "./busStopsGeoPositions";
 import * as L from "leaflet";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = pageHTML;
